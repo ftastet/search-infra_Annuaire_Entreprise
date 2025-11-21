@@ -2,10 +2,10 @@
 
 ## 1. Vue d’ensemble du pipeline
 
-SIRENE stock/flux alimente MinIO.  
-RNE stock/flux alimente MinIO puis génère `rne.db`.  
-L’ETL lit tout, génère `sirene.db`.  
-`sirene.db` est utilisé par Elasticsearch et Data.gouv.
+- SIRENE stock/flux alimente MinIO.  
+- RNE stock/flux alimente MinIO puis génère `rne.db`.  
+- L’ETL lit tout, génère `sirene.db`.  
+- `sirene.db` est utilisé par Elasticsearch et Data.gouv.
 
 ### Schéma ASCII
 
