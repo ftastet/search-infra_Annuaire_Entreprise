@@ -30,17 +30,18 @@ Ce module ne réalise aucun enrichissement : il assure uniquement l’acquisitio
 **Chemin** : `workflows/data_pipelines/sirene/flux/`  
 **dag_id** : `data_processing_sirene_flux`  
 **Schedule** : `0 4 * * *` (tous les jours à 04h00)  
-**Source** : API INSEE (flux unitaires / établissements modifiés)  
+**Source** : API INSEE (flux unités légales / établissements modifiés)  
 **Sorties** : MinIO `insee/flux/`, métadonnées de dernière modification
 
 ### Vue d’ensemble
 1. Préparation / nettoyage du dossier temporaire  
-2. Appel API flux  
+2. Appel API flux (unités légales puis établissements)  
 3. Écriture des fichiers du jour  
 4. Mise à jour des métadonnées (ex : dernière date de mise à jour)  
 5. Upload vers MinIO  
-6. Nettoyage
+6. Nettoyage  
 
+> Cas particulier : le 1er jour du mois, les tâches flux génèrent des CSV vides avec en-têtes (unités légales et établissements), les compressent, puis les envoient vers MinIO en l’absence de données renvoyées par l’API.  
 > Les notifications sont gérées via les callbacks Airflow, pas via une tâche spécifique.
 
 ---
